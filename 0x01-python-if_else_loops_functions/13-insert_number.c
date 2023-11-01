@@ -1,5 +1,5 @@
-import "lists.h"
-import <stdlib.h>
+#include "lists.h"
+#include <stdlib.h>
 
 /**
  * insert_node - inserts node in sorted list
