@@ -1,21 +1,20 @@
 #!/usr/bin/python3
 """Defines a class Square"""
 
-
 class Square:
     """Represents a square
 
     Attributes:
-        __size (int): size of a size of the square
-        __position (tuple): position of the square in 2D space
+        size (int): size of a side of the square
+        position (tuple): position of the square in 2D space
     """
 
     def __init__(self, size=0, position=(0, 0)):
-        """initializes the square
+        """Initializes the square
 
         Args:
             size (int): size of a side of the square
-            position (tuple): positoin of the square in 2D space
+            position (tuple): position of the square in 2D space
 
         Returns:
             None
@@ -24,16 +23,16 @@ class Square:
         self.position = position
 
     def area(self):
-        """calculates the square's area
+        """Calculates the square's area
 
         Returns:
             The area of the square
         """
-        return (self.__size) ** 2
+        return self.size ** 2
 
     @property
     def size(self):
-        """getter of __size
+        """Getter of size
 
         Returns:
             The size of the square
@@ -42,7 +41,7 @@ class Square:
 
     @size.setter
     def size(self, value):
-        """setter of __size
+        """Setter of size
 
         Args:
             value (int): size of a side of the square
@@ -52,30 +51,29 @@ class Square:
         """
         if type(value) is not int:
             raise TypeError("size must be an integer")
+        elif value < 0:
+            raise ValueError("size must be >= 0")
         else:
-            if value < 0:
-                raise ValueError("size must be >= 0")
-            else:
-                self.__size = value
+            self.__size = value
 
     def my_print(self):
-        """prints the square
+        """Prints the square
 
         Returns:
             None
         """
-        if self.__size == 0:
+        if self.size == 0:
             print()
             return
-        for i in range(self.__position[1]):
+        for i in range(self.position[1]):
             print()
-        for j in range(self.__size):
-            print("".join([" " for k in range(self.__position[0])]), end="")
-            print("".join(["#" for l in range(self.__size)]))
+        for j in range(self.size):
+            print("".join([" " for k in range(self.position[0])]), end="")
+            print("".join(["#" for l in range(self.size)]))
 
     @property
     def position(self):
-        """getter of __position
+        """Getter of position
 
         Returns:
             The position of the square in 2D space
@@ -84,7 +82,7 @@ class Square:
 
     @position.setter
     def position(self, value):
-        """stter of __position
+        """Setter of position
 
         Args:
             value (tuple): position of the square in 2D space
@@ -98,3 +96,4 @@ class Square:
             raise TypeError("position must be a tuple of 2 positive integers")
         else:
             self.__position = value
+
