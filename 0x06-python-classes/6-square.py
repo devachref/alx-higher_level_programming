@@ -84,7 +84,7 @@ class Square:
 
     @position.setter
     def position(self, value):
-        """setter of __position
+        """stter of __position
 
         Args:
             value (tuple): position of the square in 2D space
