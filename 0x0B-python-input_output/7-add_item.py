@@ -1,17 +1,21 @@
 #!/usr/bin/python3
-'''task 7 module'''
+""" Module that writes an Object to a text file using
+a JSON representation
+"""
+import json
 
 
-import sys
-save_to_json_file = __import__('5-save_to_json_file.py').save_to_json_file
-load_from_json_file = __import__('6-load_from_json_file.py').load_from_json_file
+def save_to_json_file(my_obj, filename):
+    """ Function that writes an object to a text file
+    by a JSON representation
 
-arglist = list(sys.argv[1:])
+    Args:
+        my_obj: object
+        filename: textfile name
 
-try:
-    old_data = load_from_json_file('add_item.json')
-except Exception:
-    old_data = []
+    Raises:
+        Exception: when the object can't be encoded
 
-old_data.extend(arglist)
-save_to_json_file(old_data, 'add_item.json')
+    """
+    with open(filename, 'w', encoding="utf-8") as f:
+        json.dump(my_obj, f)
